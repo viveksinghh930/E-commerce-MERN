@@ -5,13 +5,11 @@ const connectDB = require("./config/db");
 const app = express();
 
 
-// const authRoutes = require("./routes/auth.routes");
-
-
+const productRoutes = require("./routes/productRoutes");
+const cartRoutes = require("./routes/cartRoutes");
 
 dotenv.config();
 connectDB();
-
 
 const corsOptions = {
     origin: ['http://localhost:5173', 'http://localhost:3000'],
@@ -22,8 +20,8 @@ const corsOptions = {
 app.use(cors(corsOptions));
 app.use(express.json());
 
-
-// app.use("/api/auth", authRoutes);
+app.use("/api/products", productRoutes);
+app.use("/api/cart", cartRoutes);
 
 
 
